@@ -1,9 +1,7 @@
-import LoanCalculator from '../components/LoanCalculator'
-
-export default function Home() {
+export default function Home({ setCurrentPage }) {
   return (
     <div className="space-y-16">
-      {/* 1. HERO BANNER - High Contrast Text */}
+      {/* 1. HERO BANNER */}
       <section className="relative bg-[#7B2CBF] text-white py-20 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -18,18 +16,12 @@ export default function Home() {
                 Empowering members across Uganda with high-yield savings plans, fast-turnaround loans, and strategic land investment opportunities.
               </p>
               <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-2">
-                <a
-                  href="#accounts"
-                  className="rounded-lg bg-[#FF6600] px-6 py-3.5 text-sm font-bold text-white shadow-lg hover:bg-[#e05a00] transition"
+                <button
+                  onClick={() => setCurrentPage('products')}
+                  className="rounded-lg bg-[#FF6600] px-6 py-3.5 text-sm font-bold text-white shadow-lg hover:bg-[#e05a00] transition cursor-pointer"
                 >
-                  Explore Savings Accounts
-                </a>
-                <a
-                  href="#loans"
-                  className="rounded-lg border-2 border-white px-6 py-3.5 text-sm font-bold text-white hover:bg-white/10 transition"
-                >
-                  Apply For Loan
-                </a>
+                  Explore Products & Loans
+                </button>
               </div>
             </div>
 
@@ -75,64 +67,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. SAVINGS ACCOUNTS GRID */}
-      <section id="accounts" className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="text-center mb-12">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#FF6600]">Flexible Options</span>
-            <h2 className="text-3xl font-extrabold text-[#7B2CBF] mt-1">Our Savings Accounts</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white rounded-xl p-6 shadow-md border-t-4 border-[#7B2CBF] flex flex-col justify-between">
-              <div>
-                <h3 className="font-bold text-lg text-gray-900">Ordinary Savings</h3>
-                <p className="text-xs text-gray-600 mt-2">Flexible access Monday through Sunday. Ideal for daily transactions and business operations.</p>
-              </div>
-              <div className="mt-6 pt-4 border-t border-gray-100">
-                <span className="text-xs font-semibold text-[#FF6600]">Min. Balance: UGX 10,000</span>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-xl p-6 shadow-md border-t-4 border-[#FF6600] flex flex-col justify-between">
-              <div>
-                <h3 className="font-bold text-lg text-gray-900">Bifuna Savings</h3>
-                <p className="text-xs text-gray-600 mt-2">Earn 0.5% interest monthly on your balance. Great for building structured reserves.</p>
-              </div>
-              <div className="mt-6 pt-4 border-t border-gray-100">
-                <span className="text-xs font-semibold text-[#7B2CBF]">Interest: 0.5% / month</span>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-xl p-6 shadow-md border-t-4 border-[#7B2CBF] flex flex-col justify-between">
-              <div>
-                <h3 className="font-bold text-lg text-gray-900">Harvest Supersave</h3>
-                <p className="text-xs text-gray-600 mt-2">High-yield tier offering up to 15% annual interest or up to 40% returns over a 2-year period.</p>
-              </div>
-              <div className="mt-6 pt-4 border-t border-gray-100">
-                <span className="text-xs font-semibold text-[#FF6600]">Up to 15% p.a.</span>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-xl p-6 shadow-md border-t-4 border-[#FF6600] flex flex-col justify-between">
-              <div>
-                <h3 className="font-bold text-lg text-gray-900">Junior Account</h3>
-                <p className="text-xs text-gray-600 mt-2">Tailored for minors under 18 years to foster early financial literacy and school savings.</p>
-              </div>
-              <div className="mt-6 pt-4 border-t border-gray-100">
-                <span className="text-xs font-semibold text-[#7B2CBF]">For dependents &lt; 18 yrs</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. LOAN CALCULATOR SECTION */}
-      <section id="loans" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <LoanCalculator />
-      </section>
-
-      {/* 5. BRANCH LOCATIONS */}
+      {/* 3. BRANCH LOCATIONS */}
       <section id="branches" className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-12">
