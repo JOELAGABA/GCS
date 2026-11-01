@@ -1,11 +1,8 @@
-import Header from '../components/Header'
-
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <Header />
       <section className="mx-auto max-w-3xl px-6 py-16">
-        <h1 className="text-4xl font-semibold tracking-tight text-slate-900">
+        <h1 className="text-4xl font-semibold tracking-tight text-navy-900">
           Ground Control Station
         </h1>
         <p className="mt-4 text-lg text-slate-600">
