@@ -1,108 +1,122 @@
 import { useState } from 'react'
 
-const navLinks = [
-  { label: 'Personal', href: '#personal' },
-  { label: 'SME & Cooperatives', href: '#sme' },
-  { label: 'Products', href: '#products' },
-  { label: 'Resources', href: '#resources' },
-]
-
-export default function Navbar() {
+export default function Navbar({ currentPage, setCurrentPage }) {
   const [mobileOpen, setMobileOpen] = useState(false)
 
+  const handleNavClick = (page, e) => {
+    e.preventDefault()
+    setCurrentPage(page)
+    setMobileOpen(false)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
-    <header className="sticky top-0 z-50 shadow-sm">
-      <div className="bg-navy-950 text-white">
+    <header className="sticky top-0 z-50 shadow-md">
+      {/* Top Utility Bar in Rich Purple */}
+      <div className="bg-[#7B2CBF] text-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 text-xs sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-1 text-navy-100">
-            <a href="tel:+18005520100" className="inline-flex items-center gap-1.5 hover:text-white">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-1 text-purple-100">
+            <a href="tel:0786367115" className="inline-flex items-center gap-1.5 hover:text-white">
               <PhoneIcon />
-              <span>+1 (800) 552-0100</span>
+              <span>0786-367-115</span>
             </a>
             <a
-              href="mailto:support@gcsbank.com"
+              href="mailto:support@glorycooperativesociety.com"
               className="hidden items-center gap-1.5 hover:text-white sm:inline-flex"
             >
               <MailIcon />
-              <span>support@gcsbank.com</span>
+              <span>support@glorycooperativesociety.com</span>
             </a>
             <span className="hidden items-center gap-1.5 lg:inline-flex">
               <ClockIcon />
-              <span>Mon–Fri 8:00 AM – 6:00 PM</span>
+              <span>Mon–Fri 8:00 AM – 5:00 PM</span>
             </span>
           </div>
 
           <div className="flex items-center gap-4 font-medium">
-            <a href="#language" className="inline-flex items-center gap-1 hover:text-navy-100">
+            <a href="#language" className="inline-flex items-center gap-1 hover:text-purple-100">
               <GlobeIcon />
               <span>EN</span>
             </a>
-            <a href="#help" className="hover:text-navy-100">
+            <a href="#help" className="hover:text-purple-100">
               Help
             </a>
-            <a href="#contact" className="hidden hover:text-navy-100 sm:inline">
+            <a href="#contact" className="hidden hover:text-purple-100 sm:inline">
               Contact
             </a>
           </div>
         </div>
       </div>
 
-      <div className="border-b border-navy-100 bg-white">
+      {/* Main Navigation Bar */}
+      <div className="border-b border-purple-100 bg-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-          <a href="/" className="flex shrink-0 items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-md bg-navy-900 text-sm font-bold text-white">
+          <a
+            href="#"
+            onClick={(e) => handleNavClick('home', e)}
+            className="flex shrink-0 items-center gap-2.5 cursor-pointer"
+          >
+            <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#7B2CBF] text-sm font-bold text-white shadow">
               GCS
             </span>
             <span className="leading-tight">
-              <span className="block text-sm font-semibold tracking-wide text-navy-900">
-                GCS Bank
+              <span className="block text-sm font-bold tracking-wide text-gray-900">
+                Glory Cooperative Society
               </span>
-              <span className="block text-[11px] text-navy-500">Trusted since 1924</span>
+              <span className="block text-[11px] text-[#FF6600] font-semibold">Savings & Credit Society Ltd</span>
             </span>
           </a>
 
-          <nav
-            aria-label="Primary"
-            className="hidden items-center gap-7 lg:flex"
-          >
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-sm font-medium text-navy-800 transition hover:text-navy-500"
-              >
-                {link.label}
-              </a>
-            ))}
+          <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
+            <a
+              href="#"
+              onClick={(e) => handleNavClick('home', e)}
+              className={`text-sm font-medium transition ${
+                currentPage === 'home' ? 'text-[#FF6600] font-bold' : 'text-gray-700 hover:text-[#FF6600]'
+              }`}
+            >
+              Home
+            </a>
+            <a
+              href="#"
+              onClick={(e) => handleNavClick('products', e)}
+              className={`text-sm font-medium transition ${
+                currentPage === 'products' ? 'text-[#FF6600] font-bold' : 'text-gray-700 hover:text-[#FF6600]'
+              }`}
+            >
+              Products & Services
+            </a>
           </nav>
 
-          <div className="hidden items-center gap-2 lg:flex">
+          <div className="hidden items-center gap-2.5 lg:flex">
             <a
-              href="#find-branch"
-              className="inline-flex items-center gap-1.5 rounded-md border border-navy-200 px-3 py-2 text-sm font-medium text-navy-800 hover:bg-navy-50"
+              href="#branches"
+              onClick={(e) => {
+                if (currentPage !== 'home') setCurrentPage('home')
+              }}
+              className="inline-flex items-center gap-1.5 rounded-md border border-gray-300 px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
             >
               <PinIcon />
               Find Branch
             </a>
             <a
-              href="#talk-to-us"
-              className="rounded-md border border-navy-800 px-3 py-2 text-sm font-medium text-navy-800 hover:bg-navy-50"
+              href="#contact"
+              className="rounded-md border border-[#7B2CBF] px-3 py-2 text-sm font-medium text-[#7B2CBF] hover:bg-purple-50"
             >
               Talk to Us
             </a>
             <a
-              href="#bank-online"
-              className="rounded-md bg-navy-900 px-3.5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-navy-800"
+              href="#portal"
+              className="rounded-md bg-[#FF6600] px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#e05a00] transition"
             >
-              Bank Online
+              Member Portal
             </a>
           </div>
 
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-md p-2 text-navy-900 hover:bg-navy-50 lg:hidden"
+            className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 lg:hidden"
             aria-expanded={mobileOpen}
-            aria-controls="mobile-nav"
             onClick={() => setMobileOpen((open) => !open)}
           >
             <span className="sr-only">{mobileOpen ? 'Close menu' : 'Open menu'}</span>
@@ -111,40 +125,39 @@ export default function Navbar() {
         </div>
 
         {mobileOpen && (
-          <div
-            id="mobile-nav"
-            className="border-t border-navy-100 bg-white px-4 py-4 sm:px-6 lg:hidden"
-          >
+          <div className="border-t border-gray-200 bg-white px-4 py-4 sm:px-6 lg:hidden">
             <nav aria-label="Mobile" className="flex flex-col gap-1">
-              {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="rounded-md px-3 py-2.5 text-sm font-medium text-navy-800 hover:bg-navy-50"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {link.label}
-                </a>
-              ))}
+              <a
+                href="#"
+                className={`rounded-md px-3 py-2.5 text-sm font-medium ${
+                  currentPage === 'home' ? 'bg-purple-50 text-[#FF6600] font-bold' : 'text-gray-700 hover:bg-purple-50'
+                }`}
+                onClick={(e) => handleNavClick('home', e)}
+              >
+                Home
+              </a>
+              <a
+                href="#"
+                className={`rounded-md px-3 py-2.5 text-sm font-medium ${
+                  currentPage === 'products' ? 'bg-purple-50 text-[#FF6600] font-bold' : 'text-gray-700 hover:bg-purple-50'
+                }`}
+                onClick={(e) => handleNavClick('products', e)}
+              >
+                Products & Services
+              </a>
             </nav>
             <div className="mt-4 flex flex-col gap-2">
               <a
-                href="#bank-online"
-                className="rounded-md bg-navy-900 px-3 py-2.5 text-center text-sm font-semibold text-white"
+                href="#portal"
+                className="rounded-md bg-[#FF6600] px-3 py-2.5 text-center text-sm font-semibold text-white"
               >
-                Bank Online
+                Member Portal
               </a>
               <a
-                href="#talk-to-us"
-                className="rounded-md border border-navy-800 px-3 py-2.5 text-center text-sm font-medium text-navy-800"
+                href="#contact"
+                className="rounded-md border border-[#7B2CBF] px-3 py-2.5 text-center text-sm font-medium text-[#7B2CBF]"
               >
                 Talk to Us
-              </a>
-              <a
-                href="#find-branch"
-                className="rounded-md border border-navy-200 px-3 py-2.5 text-center text-sm font-medium text-navy-800"
-              >
-                Find Branch
               </a>
             </div>
           </div>

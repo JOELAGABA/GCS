@@ -1,0 +1,211 @@
+import { useState } from 'react'
+
+const navLinks = [
+  { label: 'Personal', href: '#personal' },
+  { label: 'SME & Cooperatives', href: '#sme' },
+  { label: 'Products', href: '#products' },
+  { label: 'Resources', href: '#resources' },
+]
+
+export default function Navbar() {
+  const [mobileOpen, setMobileOpen] = useState(false)
+
+  return (
+    <header className="sticky top-0 z-50 shadow-sm">
+      <div className="bg-navy-950 text-white">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 text-xs sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-1 text-navy-100">
+            <a href="tel:+18005520100" className="inline-flex items-center gap-1.5 hover:text-white">
+              <PhoneIcon />
+              <span>+1 (800) 552-0100</span>
+            </a>
+            <a
+              href="mailto:support@gcsbank.com"
+              className="hidden items-center gap-1.5 hover:text-white sm:inline-flex"
+            >
+              <MailIcon />
+              <span>support@gcsbank.com</span>
+            </a>
+            <span className="hidden items-center gap-1.5 lg:inline-flex">
+              <ClockIcon />
+              <span>Mon–Fri 8:00 AM – 6:00 PM</span>
+            </span>
+          </div>
+
+          <div className="flex items-center gap-4 font-medium">
+            <a href="#language" className="inline-flex items-center gap-1 hover:text-navy-100">
+              <GlobeIcon />
+              <span>EN</span>
+            </a>
+            <a href="#help" className="hover:text-navy-100">
+              Help
+            </a>
+            <a href="#contact" className="hidden hover:text-navy-100 sm:inline">
+              Contact
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="border-b border-navy-100 bg-white">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+          <a href="/" className="flex shrink-0 items-center gap-2.5">
+            <span className="flex h-9 w-9 items-center justify-center rounded-md bg-navy-900 text-sm font-bold text-white">
+              GCS
+            </span>
+            <span className="leading-tight">
+              <span className="block text-sm font-semibold tracking-wide text-navy-900">
+                GCS Bank
+              </span>
+              <span className="block text-[11px] text-navy-500">Trusted since 1924</span>
+            </span>
+          </a>
+
+          <nav
+            aria-label="Primary"
+            className="hidden items-center gap-7 lg:flex"
+          >
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-sm font-medium text-navy-800 transition hover:text-navy-500"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="hidden items-center gap-2 lg:flex">
+            <a
+              href="#find-branch"
+              className="inline-flex items-center gap-1.5 rounded-md border border-navy-200 px-3 py-2 text-sm font-medium text-navy-800 hover:bg-navy-50"
+            >
+              <PinIcon />
+              Find Branch
+            </a>
+            <a
+              href="#talk-to-us"
+              className="rounded-md border border-navy-800 px-3 py-2 text-sm font-medium text-navy-800 hover:bg-navy-50"
+            >
+              Talk to Us
+            </a>
+            <a
+              href="#bank-online"
+              className="rounded-md bg-navy-900 px-3.5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-navy-800"
+            >
+              Bank Online
+            </a>
+          </div>
+
+          <button
+            type="button"
+            className="inline-flex items-center justify-center rounded-md p-2 text-navy-900 hover:bg-navy-50 lg:hidden"
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav"
+            onClick={() => setMobileOpen((open) => !open)}
+          >
+            <span className="sr-only">{mobileOpen ? 'Close menu' : 'Open menu'}</span>
+            {mobileOpen ? <CloseIcon /> : <MenuIcon />}
+          </button>
+        </div>
+
+        {mobileOpen && (
+          <div
+            id="mobile-nav"
+            className="border-t border-navy-100 bg-white px-4 py-4 sm:px-6 lg:hidden"
+          >
+            <nav aria-label="Mobile" className="flex flex-col gap-1">
+              {navLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="rounded-md px-3 py-2.5 text-sm font-medium text-navy-800 hover:bg-navy-50"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+            <div className="mt-4 flex flex-col gap-2">
+              <a
+                href="#bank-online"
+                className="rounded-md bg-navy-900 px-3 py-2.5 text-center text-sm font-semibold text-white"
+              >
+                Bank Online
+              </a>
+              <a
+                href="#talk-to-us"
+                className="rounded-md border border-navy-800 px-3 py-2.5 text-center text-sm font-medium text-navy-800"
+              >
+                Talk to Us
+              </a>
+              <a
+                href="#find-branch"
+                className="rounded-md border border-navy-200 px-3 py-2.5 text-center text-sm font-medium text-navy-800"
+              >
+                Find Branch
+              </a>
+            </div>
+          </div>
+        )}
+      </div>
+    </header>
+  )
+}
+
+function PhoneIcon() {
+  return (
+    <svg className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path d="M2 3.5A1.5 1.5 0 0 1 3.5 2h2.1c.7 0 1.3.5 1.45 1.18l.5 2.3a1.5 1.5 0 0 1-.43 1.4L5.9 8.1a11.05 11.05 0 0 0 6 6l1.22-1.22a1.5 1.5 0 0 1 1.4-.43l2.3.5A1.5 1.5 0 0 1 18 14.4v2.1a1.5 1.5 0 0 1-1.5 1.5C8.16 18 2 11.84 2 4.5V3.5Z" />
+    </svg>
+  )
+}
+
+function MailIcon() {
+  return (
+    <svg className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path d="M2 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5Zm8 5.27L3.2 5.5h13.6L10 10.27Z" />
+    </svg>
+  )
+}
+
+function ClockIcon() {
+  return (
+    <svg className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path fillRule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm.75-12.25a.75.75 0 0 0-1.5 0v4.5c0 .2.08.39.22.53l2.5 2.5a.75.75 0 1 0 1.06-1.06L10.75 9.94V5.75Z" clipRule="evenodd" />
+    </svg>
+  )
+}
+
+function GlobeIcon() {
+  return (
+    <svg className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path fillRule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm-1.1-1.6A12.3 12.3 0 0 1 7.1 10c0-2.3.4-4.5 1.1-6.4h2.2A12.3 12.3 0 0 1 12.9 10c0 2.3-.4 4.5-1.1 6.4H8.9ZM4.3 8.5h-2.1a8.03 8.03 0 0 0 0 3h2.1a14.6 14.6 0 0 1 0-3Zm13.5 0h-2.1a14.6 14.6 0 0 1 0 3h2.1a8.03 8.03 0 0 0 0-3ZM5.6 10c0 2.1.4 4.1 1.1 5.9A8.02 8.02 0 0 1 3.7 10 8.02 8.02 0 0 1 6.7 4.1C6 5.9 5.6 7.9 5.6 10Zm8.8 0c0-2.1-.4-4.1-1.1-5.9A8.02 8.02 0 0 1 16.3 10a8.02 8.02 0 0 1-3 5.9c.7-1.8 1.1-3.8 1.1-5.9Z" clipRule="evenodd" />
+    </svg>
+  )
+}
+
+function PinIcon() {
+  return (
+    <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path fillRule="evenodd" d="M5.05 4.05a7 7 0 1 1 9.9 9.9L10 18.9l-4.95-4.95a7 7 0 0 1 0-9.9ZM10 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" clipRule="evenodd" />
+    </svg>
+  )
+}
+
+function MenuIcon() {
+  return (
+    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  )
+}
+
+function CloseIcon() {
+  return (
+    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M6 18 18 6M6 6l12 12" />
+    </svg>
+  )
+}

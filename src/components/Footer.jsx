@@ -1,0 +1,81 @@
+export default function Footer() {
+  return (
+    <footer className="bg-[#7B2CBF] text-white pt-12 pb-8 border-t-4 border-[#FF6600]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          {/* Col 1: Brand */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#FF6600] font-bold text-white text-lg">
+                GCS
+              </span>
+              <div>
+                <h3 className="font-bold text-base text-white">Glory Cooperative Society</h3>
+                <span className="text-xs text-orange-200">Savings & Credit Society Ltd</span>
+              </div>
+            </div>
+            <p className="text-xs text-purple-100 leading-relaxed">
+              Your trusted financial partner, ensuring growth and success through high-yield savings, affordable loans, and land investments.
+            </p>
+          </div>
+
+          {/* Col 2: Quick Links */}
+          <div>
+            <h4 className="text-sm font-bold uppercase tracking-wider text-[#FF6600] mb-4">Quick Links</h4>
+            <ul className="space-y-2 text-xs text-purple-100">
+              <li><a href="#about" className="hover:text-white transition">About Our Cooperative</a></li>
+              <li><a href="#accounts" className="hover:text-white transition">Savings Accounts</a></li>
+              <li><a href="#loans" className="hover:text-white transition">Loan Products</a></li>
+              <li><a href="#branches" className="hover:text-white transition">Branch Network</a></li>
+              <li><a href="#contact" className="hover:text-white transition">Contact Us</a></li>
+            </ul>
+          </div>
+
+          {/* Col 3: Accounts & Services */}
+          <div>
+            <h4 className="text-sm font-bold uppercase tracking-wider text-[#FF6600] mb-4">Savings & Credit</h4>
+            <ul className="space-y-2 text-xs text-purple-100">
+              <li>Ordinary Savings Account</li>
+              <li>Bifuna Account (0.5%/mo)</li>
+              <li>Harvest Supersave (Up to 15% p.a.)</li>
+              <li>Junior Account (&lt; 18 yrs)</li>
+              <li>Business & School Fees Loans</li>
+              <li>Land Investment & Sales</li>
+            </ul>
+          </div>
+
+          {/* Col 4: Contact & Branches */}
+          <div>
+            <h4 className="text-sm font-bold uppercase tracking-wider text-[#FF6600] mb-4">Branch Helpline</h4>
+            <div className="space-y-3 text-xs text-purple-100">
+              <div>
+                <strong className="text-white block">Call/WhatsApp:</strong>
+                <a href="tel:0786367115" className="text-[#FF6600] font-bold hover:underline text-sm">0786-367-115</a>
+              </div>
+              <div>
+                <strong className="text-white block">Main Branches:</strong>
+                <span>Kawaala • Kasubi • Kasangati</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar with J.A. Technologies Link */}
+        <div className="border-t border-purple-800 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-purple-200 gap-4">
+          <p>© Glory Cooperative Society Limited. All rights reserved.</p>
+          <p className="text-purple-200">
+            Website built by{' '}
+            <a
+              href="https://example.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold text-[#FF6600] hover:underline"
+            >
+              J.A. Technologies
+            </a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  )
+}
