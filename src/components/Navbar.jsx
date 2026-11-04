@@ -63,7 +63,7 @@ export default function Navbar({ currentPage, setCurrentPage }) {
               <span className="block text-sm font-bold tracking-wide text-gray-900">
                 Glory Cooperative Society
               </span>
-              <span className="block text-[11px] text-[#FF6600] font-semibold">Savings & Credit Society Ltd</span>
+              <span className="block text-[11px] text-[#FF6600] font-semibold">Limited</span>
             </span>
           </a>
 
@@ -79,12 +79,30 @@ export default function Navbar({ currentPage, setCurrentPage }) {
             </a>
             <a
               href="#"
+              onClick={(e) => handleNavClick('about', e)}
+              className={`text-sm font-medium transition ${
+                currentPage === 'about' ? 'text-[#FF6600] font-bold' : 'text-gray-700 hover:text-[#FF6600]'
+              }`}
+            >
+              About Us
+            </a>
+            <a
+              href="#"
               onClick={(e) => handleNavClick('products', e)}
               className={`text-sm font-medium transition ${
                 currentPage === 'products' ? 'text-[#FF6600] font-bold' : 'text-gray-700 hover:text-[#FF6600]'
               }`}
             >
               Products & Services
+            </a>
+            <a
+              href="#agent-banking"
+              onClick={(e) => {
+                if (currentPage !== 'home') setCurrentPage('home')
+              }}
+              className="text-sm font-medium text-gray-700 hover:text-[#FF6600] transition"
+            >
+              Agent Banking
             </a>
           </nav>
 
@@ -139,11 +157,30 @@ export default function Navbar({ currentPage, setCurrentPage }) {
               <a
                 href="#"
                 className={`rounded-md px-3 py-2.5 text-sm font-medium ${
+                  currentPage === 'about' ? 'bg-purple-50 text-[#FF6600] font-bold' : 'text-gray-700 hover:bg-purple-50'
+                }`}
+                onClick={(e) => handleNavClick('about', e)}
+              >
+                About Us
+              </a>
+              <a
+                href="#"
+                className={`rounded-md px-3 py-2.5 text-sm font-medium ${
                   currentPage === 'products' ? 'bg-purple-50 text-[#FF6600] font-bold' : 'text-gray-700 hover:bg-purple-50'
                 }`}
                 onClick={(e) => handleNavClick('products', e)}
               >
                 Products & Services
+              </a>
+              <a
+                href="#agent-banking"
+                className="rounded-md px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-purple-50"
+                onClick={(e) => {
+                  setMobileOpen(false)
+                  if (currentPage !== 'home') setCurrentPage('home')
+                }}
+              >
+                Agent Banking
               </a>
             </nav>
             <div className="mt-4 flex flex-col gap-2">
